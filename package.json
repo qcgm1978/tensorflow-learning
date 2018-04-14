@@ -1,0 +1,24 @@
+{
+  "name": "tensorflow-learning",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "test": "mocha test/**/**.spec.ts --require ts-node/register --watch-extensions ts --watch --recursive --inspect",
+    "build": "webpack",
+    "start": "webpack -d -w"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "chai": "^4.1.2",
+    "mocha": "^5.1.0",
+    "webpack": "^4.5.0",
+    "webpack-cli": "^2.0.14"
+  },
+  "dependencies": {
+    "@tensorflow/tfjs": "^0.9.1",
+    "lodash": "^4.17.5",
+    "ts-node": "^5.0.1"
+  }
+}
