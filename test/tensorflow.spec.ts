@@ -6,6 +6,9 @@ describe(`https://js.tensorflow.org/tutorials/core-concepts.html`, () => {
         process.on('unhandledRejection', function (err, promise) {
             console.error('Unhandled rejection (promise: ', promise, ', reason: ', err, ').');
         });
+        process.on('uncaughtException', function (err) {
+            console.log('Caught exception: ', err);
+        });
     }
     it(`The primary Tensor constructor is the tf.tensor function:`, () => {
         // 2x3 Tensor
@@ -116,9 +119,10 @@ describe(`https://js.tensorflow.org/tutorials/core-concepts.html`, () => {
             asyncFoo().then(data => {
                 expect(data.epoch).to.eql([0, 1, 2])
                 done()
-            }).catch(() => {
+            }).catch(err => {
                 done()
             })
+
         });
     });
     describe(`Memory Management: dispose and tf.tidy`, () => {
