@@ -16,4 +16,5 @@ model.fit(xs, ys).then(() => {
     // Use the model to do inference on a data point the model hasn't seen before:
     const ret = model.predict(tf.tensor2d([5], [1, 1])).print();
     console.log(ret)
+    debugger;
 });
