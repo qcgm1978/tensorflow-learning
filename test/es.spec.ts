@@ -1,11 +1,28 @@
 import { expect } from 'chai';
-
 describe(`The Float32Array typed array represents an array of 32-bit floating point numbers (corresponding to the C float data type) in the platform byte order.`, () => {
     beforeAll: {
         process.on('unhandledRejection', function (err, promise) {
-            console.error('Unhandled rejection (promise: ', promise, ', reason: ', err, ').');
+            console.log('Unhandled rejection (promise: ', promise, ', reason: ', err, ').');
         });
     }
+    describe(`https://wanago.io/2018/04/16/explaining-async-await-creating-dummy-promises/`, (done) => {
+        it(`beginners try to do something like that`, () => {
+            function fetchUsers() {
+                let users;
+                new Promise(resolve => {
+                    setTimeout(() => {
+                        users = 'setTimeout'
+                        resolve(users)
+                    })
+                }).then(data => {
+                    expect(data).to.equal('setTimeout')
+                    done()
+                })
+                expect(users).to.equal(); // undefined
+            }
+            fetchUsers()
+        });
+    });
     it(`Different ways to create a Float32Array:`, () => {
         // From a length
         var float32 = new Float32Array(2);

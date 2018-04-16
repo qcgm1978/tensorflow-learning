@@ -31,4 +31,12 @@ describe(``, () => {
             .multiply(2)
             .done()).to.equal(14); // 14
     });
+    describe(`http://mathjs.org/docs/expressions/algebra.html`, () => {
+        it(`The function math.simplify simplifies an expression tree:`, () => {
+            expect(math.simplify('3 + 2 / 4').toString()).to.equal('7 / 2');             // '7 / 2'
+            expect(math.simplify('2x + 3x').toString()).to.equal('5 * x');               // '5 * x'
+            expect(math.simplify('x^2 + x + 3 + x^2').toString()).to.equal('2 * x ^ 2 + x + 3');     // '2 * x ^ 2 + x + 3'
+            expect(math.simplify('x * y * -x / (x ^ 2)').toString()).to.equal('-y');  // '-y'
+        });
+    });
 });
