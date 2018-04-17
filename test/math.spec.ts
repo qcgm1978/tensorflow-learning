@@ -6,6 +6,9 @@ describe(``, () => {
             console.error('Unhandled rejection (promise: ', promise, ', reason: ', err, ').');
         });
     }
+    it(`The Number.MAX_SAFE_INTEGER constant represents the maximum safe integer in JavaScript (2^53 - 1).`, () => {
+        expect(Number.MAX_SAFE_INTEGER).to.equal(Math.pow(2, 53) - 1)
+    });
     it(``, () => {
         // load math.js
         var math = require('mathjs');
