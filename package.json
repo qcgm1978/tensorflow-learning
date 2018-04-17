@@ -2,8 +2,23 @@
   "name": "tensorflow-learning",
   "version": "1.0.0",
   "description": "",
+  "jest": {
+    "transform": {
+      "^.+\\.tsx?$": "ts-jest"
+    },
+    "testRegex": "(/__tests__/.*|(\\.|/)(test|spec))\\.(jsx?|tsx?)$",
+    "moduleFileExtensions": [
+      "ts",
+      "tsx",
+      "js",
+      "jsx",
+      "json",
+      "node"
+    ]
+  },
   "scripts": {
-    "test": "mocha test/**/**.spec.ts --require ts-node/register --watch-extensions ts --watch --recursive --inspect",
+    "test": "jest spec.ts --notify",
+    "mocha": "mocha test/**/**.spec.ts --require ts-node/register --watch-extensions ts --watch --recursive --inspect",
     "build": "webpack",
     "start": "webpack -d -w"
   },
@@ -11,8 +26,13 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "@types/jest": "^22.2.3",
     "chai": "^4.1.2",
+    "jest": "^22.4.3",
+    "jest-environment-jsdom": "^22.4.3",
+    "kind-of": "^6.0.2",
     "mocha": "^5.1.0",
+    "ts-jest": "^22.4.3",
     "typescript": "^2.8.1",
     "webpack": "^4.5.0",
     "webpack-cli": "^2.0.14"
