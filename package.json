@@ -17,7 +17,7 @@
     ]
   },
   "scripts": {
-    "test": "sudo jest spec.ts --notify",
+    "test": "sudo jest spec.ts --notify --watch",
     "mocha": "mocha test/**/**.spec.ts --require ts-node/register --watch-extensions ts --watch --recursive --inspect",
     "build": "webpack",
     "start": "webpack -d -w"
