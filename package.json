@@ -17,7 +17,8 @@
     ]
   },
   "scripts": {
-    "test": "sudo node --inspect node_modules/.bin/jest --runInBand  spec.ts --watch",
+    "test": "node --inspect ./node_modules/jest/bin/jest.js --runInBand  spec.ts --watch",
+    "mac": "sudo node --inspect node_modules/.bin/jest --runInBand  spec.ts --watch",
     "mocha": "mocha test/**/**.spec.ts --require ts-node/register --watch-extensions ts --watch --recursive --inspect",
     "build": "webpack",
     "start": "webpack -d -w"
