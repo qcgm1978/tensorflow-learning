@@ -1,5 +1,30 @@
-import { expect } from 'chai';
+// import { expect } from 'chai';
 // import * as sinon from 'sinon'
+describe(`https://boostlog.io/@nixus89896/10-famous-bugs-in-javascript-5ad82c4447018500491f3e41`, () => {
+    // it(` Syntax Error`, () => {
+    //     expect(() => { Number.MAX_SAFE_INTEGER = 67 }).toThrow()
+    // });
+    it(`Invalid Comparison Operators`, () => {
+        const func = (arg) => {
+            return arg = 1
+        }
+        expect(func(2)).toEqual(1)
+    });
+    it(`Range Error`, () => {
+        let i = 0;
+        function add(a) {
+            i++
+            if (i > 10) {
+                throw ('Range Error')
+            }
+            add(a - 5);
+        }
+        expect(add.bind(5)).toThrow()
+    });
+    it(`Extra commas`, () => {
+        const obj = { a: 1, }
+    });
+});
 describe(`The Float32Array typed array represents an array of 32-bit floating point numbers (corresponding to the C float data type) in the platform byte order.`, () => {
     beforeAll: {
         process.on('unhandledRejection', function (err, promise) {
@@ -16,10 +41,10 @@ describe(`The Float32Array typed array represents an array of 32-bit floating po
                         resolve(users)
                     }, 500)
                 }).then(data => {
-                    expect(data).to.equal('setTimeout')
+                    expect(data).toEqual('setTimeout')
                     done()
                 })
-                expect(users).to.equal(); // undefined
+                expect(users).toEqual(); // undefined
             }
             fetchUsers()
         });
@@ -27,7 +52,7 @@ describe(`The Float32Array typed array represents an array of 32-bit floating po
             async function fetchUsers() {
                 const usersResponse = await new Promise(resolve => setTimeout(() => resolve(42), 500));
                 const usersData = await new Promise(resolve => setTimeout(() => resolve(usersResponse + 10), 500));
-                expect(usersData).to.equal(52);
+                expect(usersData).toEqual(52);
             }
             fetchUsers()
         });
@@ -37,7 +62,7 @@ describe(`The Float32Array typed array represents an array of 32-bit floating po
                     const usersResponse = await fetch(`${apiUrl}/users`);
                     const usersData = await usersResponse.json();
                 } catch (e) {
-                    expect(e.message).to.equal("fetch is not defined");
+                    expect(e.message).toEqual("fetch is not defined");
                 }
             }
             fetchUsers()
@@ -64,7 +89,7 @@ describe(`The Float32Array typed array represents an array of 32-bit floating po
         });
         it(`await calls the then method.`, () => {
             const usersPromise = new Promise(resolve => setTimeout(() => resolve(10), 500))
-            expect(usersPromise.then).to.be.a('function') // a function here
+            expect(usersPromise.then).toBeInstanceOf(Function) // a function here
 
             usersPromise.then(data => 42);
             async function fetchUsers() {
@@ -72,7 +97,7 @@ describe(`The Float32Array typed array represents an array of 32-bit floating po
                 const usersResponse = await usersPromise;
                 usersPromise.then(data => {
 
-                    expect(data).to.equal(10)
+                    expect(data).toEqual(10)
                 })
             }
             fetchUsers()
@@ -88,7 +113,7 @@ describe(`The Float32Array typed array represents an array of 32-bit floating po
             };
 
             dummyPromise.then(response => {
-                expect(response).to.equal('that is the question');
+                expect(response).toEqual('that is the question');
                 // To be, or not to be 
                 // that is the question
             });
@@ -98,13 +123,13 @@ describe(`The Float32Array typed array represents an array of 32-bit floating po
         // From a length
         var float32 = new Float32Array(2);
         float32[0] = 42;
-        expect(float32[0]).to.equal(42)
-        expect(float32.length).to.equal(2)
-        expect(float32.BYTES_PER_ELEMENT).to.equal(4)
+        expect(float32[0]).toEqual(42)
+        expect(float32.length).toEqual(2)
+        expect(float32.BYTES_PER_ELEMENT).toEqual(4)
 
         // From an array
         var arr = new Float32Array([21, 31]);
-        expect(arr[1]).to.equal(31)
+        expect(arr[1]).toEqual(31)
 
     });
     it(`The DataView view provides a low-level interface for reading and writing multiple number types in an ArrayBuffer irrespective of the platform's endianness.`, () => {
@@ -114,7 +139,7 @@ describe(`The Float32Array typed array represents an array of 32-bit floating po
         var view1 = new DataView(buffer);
         var view2 = new DataView(buffer, 12, 4); //from byte 12 for the next 4 bytes
         view1.setInt8(12, 42); // put 42 in slot 12
-        expect(view2.getInt8(0)).to.equal(42)
+        expect(view2.getInt8(0)).toEqual(42)
         // expected output: 42
     });
     it(`DataView accessors provide explicit control of how data will be accessed irrespective of the platform architecture's endianness.`, () => {
@@ -124,8 +149,8 @@ describe(`The Float32Array typed array represents an array of 32-bit floating po
             // Int16Array uses the platform's endianness.
             return new Int16Array(buffer)[0] === 256;
         };
-        expect(littleEndian(true)).to.equal(true)
-        expect(littleEndian(false)).to.equal(false)
+        expect(littleEndian(true)).toEqual(true)
+        expect(littleEndian(false)).toEqual(false)
 
     });
     it(`DataView.prototype.setInt16()
@@ -134,9 +159,9 @@ Stores a signed 16-bit integer (short) value at the specified byte offset from t
             var dv = new DataView(buffer, 0);
 
             dv.setInt16(1, 42);
-            expect(dv.getInt16(1)).to.equal(42)
+            expect(dv.getInt16(1)).toEqual(42)
         });
     it(`Calling DataView() as a function without new, will throw a TypeError from now on.`, () => {
-        expect(() => { var dv = DataView(buffer, 0) }).to.throw()
+        expect(() => { var dv = DataView(buffer, 0) }).toThrow()
     });
 });
