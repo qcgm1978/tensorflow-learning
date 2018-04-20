@@ -17,7 +17,7 @@
     ]
   },
   "scripts": {
-    "test": "jest spec.ts --notify",
+    "test": "sudo node --inspect node_modules/.bin/jest --runInBand  spec.ts --watch",
     "mocha": "mocha test/**/**.spec.ts --require ts-node/register --watch-extensions ts --watch --recursive --inspect",
     "build": "webpack",
     "start": "webpack -d -w"
@@ -32,6 +32,7 @@
     "jest-environment-jsdom": "^22.4.3",
     "kind-of": "^6.0.2",
     "mocha": "^5.1.0",
+    "source-map-support": "^0.5.4",
     "ts-jest": "^22.4.3",
     "typescript": "^2.8.1",
     "webpack": "^4.5.0",
