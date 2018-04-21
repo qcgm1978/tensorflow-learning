@@ -13,6 +13,20 @@ describe(`https://js.tensorflow.org/tutorials/core-concepts.html`, () => {
     describe('Tensors / Classes: This section shows the main Tensor related classes in TensorFlow.js and the methods we expose on them.', () => {
         describe(`tf.Tensor class source
 A tf.Tensor object represents an immutable, multidimensional array of numbers that has a shape and a data type.`, () => {
+                it(`This is an experimental technology in es standard: The flatten() method creates a new array with all sub-array elements concatted into it recursively up to the specified depth.`, () => {
+                    var arr1 = [1, 2, [3, 4]];
+                    if (arr1.flatten) {
+                        expect(arr1.flatten()).toEqual()
+                        // [1, 2, 3, 4]
+
+                        var arr2 = [1, 2, [3, 4, [5, 6]]];
+                        arr2.flatten();
+                        // [1, 2, 3, 4, [5, 6]]
+
+                        var arr3 = [1, 2, [3, 4, [5, 6]]];
+                        arr3.flatten(2);
+                    }
+                })
                 it(`flatten () method: Flatten a Tensor to a 1D array.`, () => {
                     const tensor = tf.tensor([1, 2, 3, 4]);
                     expect(tensor.flatten).toBeDefined()
