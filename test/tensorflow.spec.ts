@@ -10,6 +10,10 @@ describe(`https://js.tensorflow.org/tutorials/core-concepts.html`, () => {
             console.log('Caught exception: ', err);
         });
     }
+    it(`tf.randomUniform (shape, minval?, maxval?, dtype?) function.
+Creates a tf.Tensor with values sampled from a uniform distribution.`, () => {
+            expect(tf.randomUniform([2, 2]).dataSync()[0]).toBeLessThan(1)
+        });
     it(`tf.randomNormal (shape, mean?, stdDev?, dtype?, seed?) function`, () => {
         expect(tf.randomNormal([2, 2]).dataSync().length).toEqual(4);
 
