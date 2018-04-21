@@ -10,6 +10,10 @@ describe(`https://js.tensorflow.org/tutorials/core-concepts.html`, () => {
             console.log('Caught exception: ', err);
         });
     }
+    it(`tf.range (start, stop, step?, dtype?) function source
+Creates a new tf.Tensor1D filled with the numbers in the range provided.`, () => {
+            expect(tf.range(0, 9, 2).dataSync()).toEqual(new Float32Array([0, 2, 4, 6, 8]))
+        });
     it(`tf.randomUniform (shape, minval?, maxval?, dtype?) function.
 Creates a tf.Tensor with values sampled from a uniform distribution.`, () => {
             expect(tf.randomUniform([2, 2]).dataSync()[0]).toBeLessThan(1)
