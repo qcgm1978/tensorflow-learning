@@ -10,6 +10,18 @@ describe(`https://js.tensorflow.org/tutorials/core-concepts.html`, () => {
             console.log('Caught exception: ', err);
         });
     }
+    describe('Tensors / Classes: This section shows the main Tensor related classes in TensorFlow.js and the methods we expose on them.', () => {
+        describe(`tf.Tensor class source
+A tf.Tensor object represents an immutable, multidimensional array of numbers that has a shape and a data type.`, () => {
+                it(`flatten () method: Flatten a Tensor to a 1D array.`, () => {
+                    const tensor = tf.tensor([1, 2, 3, 4]);
+                    expect(tensor.flatten).toBeDefined()
+                    expect(tensor.flatten().dataSync()).toEqual(new Float32Array([1, 2, 3, 4]))
+                    const tensor1 = tf.tensor([[1, 2], [3, 4]]);
+                    expect(tensor1.flatten().dataSync()).toEqual(new Float32Array([1, 2, 3, 4]))
+                })
+            })
+    })
     it(`tf.range (start, stop, step?, dtype?) function source
 Creates a new tf.Tensor1D filled with the numbers in the range provided.`, () => {
             expect(tf.range(0, 9, 2).dataSync()).toEqual(new Float32Array([0, 2, 4, 6, 8]))
